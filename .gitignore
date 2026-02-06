@@ -2,6 +2,12 @@
 *.xlsx
 *.xls
 
+# Tableau files
+*.twb
+*.twbx
+*.hyper
+*.tde
+
 # Common OS/app noise
 .DS_Store
 Thumbs.db

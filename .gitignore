@@ -1,0 +1,14 @@
+# Ignore all Excel files
+*.xlsx
+*.xls
+
+# Common OS/app noise
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Temporary
+*.tmp

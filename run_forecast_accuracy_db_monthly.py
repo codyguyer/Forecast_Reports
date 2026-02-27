@@ -18,9 +18,10 @@ ACTUALS_LOADER = V4_ROOT / "scripts" / "sql" / "load_actuals_only_to_sql.py"
 MARKETING_LOADER = V4_ROOT / "scripts" / "sql" / "load_marketing_forecast_2026_to_sql.py"
 CATALOG_LOADER = V4_ROOT / "scripts" / "sql" / "load_product_catalog_bu_to_sql.py"
 REPORT_RUNNER = ROOT / "build_forecast_accuracy_report_db.py"
+TREND_REPORT_RUNNER = ROOT / "build_forecast_accuracy_trend_report_db.py"
 
 DEFAULT_ACTUALS_FILE = V4_ROOT / "data" / "raw" / "all_products_actuals_and_bookings.xlsx"
-DEFAULT_MARKETING_FILE = ROOT / "Marketing Forecast Data (copy).xlsx"
+DEFAULT_MARKETING_FILE = ROOT / "Marketing Forecast Data.xlsx"
 DEFAULT_CATALOG_FILE = ROOT / "product_catalog_master.xlsx"
 
 
@@ -33,8 +34,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--actuals-file", type=str, default=str(DEFAULT_ACTUALS_FILE))
     parser.add_argument("--marketing-file", type=str, default=str(DEFAULT_MARKETING_FILE))
     parser.add_argument("--catalog-file", type=str, default=str(DEFAULT_CATALOG_FILE))
+    parser.add_argument(
+        "--marketing-snapshot-month",
+        type=str,
+        default=None,
+        help="Optional marketing snapshot month in YYYY-MM. Defaults to loader current month.",
+    )
     parser.add_argument("--compare-baseline", choices=["none", "legacy", "copy2026", "db"], default="legacy")
     parser.add_argument("--dq-mode", choices=["off", "warn", "fail"], default="fail")
+    parser.add_argument("--skip-trend-report", action="store_true")
+    parser.add_argument("--trend-window-months", type=int, default=12)
+    parser.add_argument("--trend-top-n-products", type=int, default=10)
     parser.add_argument("--skip-actuals-load", action="store_true")
     parser.add_argument("--skip-marketing-load", action="store_true")
     parser.add_argument("--skip-catalog-load", action="store_true")
@@ -77,23 +87,26 @@ def main() -> None:
         )
 
     if not args.skip_marketing_load:
+        marketing_cmd = [
+            sys.executable,
+            str(MARKETING_LOADER),
+            "--server",
+            args.server,
+            "--database",
+            args.database,
+            "--driver",
+            args.driver,
+            "--source-file",
+            args.marketing_file,
+            "--sheet",
+            "2026 Data",
+            "--start-row",
+            "6",
+        ]
+        if args.marketing_snapshot_month:
+            marketing_cmd.extend(["--snapshot-month", args.marketing_snapshot_month])
         run_step(
-            [
-                sys.executable,
-                str(MARKETING_LOADER),
-                "--server",
-                args.server,
-                "--database",
-                args.database,
-                "--driver",
-                args.driver,
-                "--source-file",
-                args.marketing_file,
-                "--sheet",
-                "2026 Data",
-                "--start-row",
-                "6",
-            ],
+            marketing_cmd,
             cwd=V4_ROOT,
         )
 
@@ -147,6 +160,32 @@ def main() -> None:
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.move(str(src), str(dst))
             print(f"[MOVE] {src} -> {dst}")
+
+    if not args.skip_trend_report:
+        trend_name = f"{month_text} Forecast Accuracy Trend Report db-monthly-run.xlsx"
+        run_step(
+            [
+                sys.executable,
+                str(TREND_REPORT_RUNNER),
+                "--month",
+                report_month.strftime("%Y-%m"),
+                "--server",
+                args.server,
+                "--database",
+                args.database,
+                "--driver",
+                args.driver,
+                "--window-months",
+                str(args.trend_window_months),
+                "--top-n-products",
+                str(args.trend_top_n_products),
+                "--dq-mode",
+                args.dq_mode,
+                "--output",
+                f"outputs/reports/{trend_name}",
+            ],
+            cwd=ROOT,
+        )
 
     print("[DONE] Monthly DB-first Forecast Accuracy run completed.")
 

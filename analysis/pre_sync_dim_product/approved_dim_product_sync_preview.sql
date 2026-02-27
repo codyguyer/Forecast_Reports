@@ -1,0 +1,13 @@
+USE Forecast_Database;
+GO
+UPDATE dbo.dim_product SET business_unit_code = N'D200', product_family = N'Chairs', marketing_manager = N'Mandy Schlater', salesforce_feature_mode = N'quantity', sku_list = N'ITEM_153592-001', updated_at_utc = SYSUTCDATETIME() WHERE product_code = N'153592-001';
+UPDATE dbo.dim_product SET business_unit_code = N'D200', product_family = N'Chairs', marketing_manager = N'Mandy Schlater', salesforce_feature_mode = N'quantity', sku_list = N'ITEM_153592-002', updated_at_utc = SYSUTCDATETIME() WHERE product_code = N'153592-002';
+UPDATE dbo.dim_product SET business_unit_code = N'D200', product_family = N'Chairs', marketing_manager = N'Mandy Schlater', salesforce_feature_mode = N'quantity', sku_list = N'ITEM_153592-003', updated_at_utc = SYSUTCDATETIME() WHERE product_code = N'153592-003';
+UPDATE dbo.dim_product SET business_unit_code = N'D200', product_family = N'Chairs', marketing_manager = N'Krista Beyke', salesforce_feature_mode = N'quantity', sku_list = N'ITEM_153810-XXX', updated_at_utc = SYSUTCDATETIME() WHERE product_code = N'153810-XXX';
+UPDATE dbo.dim_product SET business_unit_code = N'D300', product_family = N'Parts, Service & Repair', marketing_manager = NULL, salesforce_feature_mode = N'dollars', sku_list = N'PROD_7281', updated_at_utc = SYSUTCDATETIME() WHERE product_code = N'7281';
+UPDATE dbo.dim_product SET business_unit_code = N'D300', product_family = N'Parts, Service & Repair', marketing_manager = NULL, salesforce_feature_mode = N'dollars', sku_list = N'PROD_7291', updated_at_utc = SYSUTCDATETIME() WHERE product_code = N'7291';
+UPDATE dbo.dim_product SET business_unit_code = N'D300', product_family = N'Accessories', marketing_manager = NULL, salesforce_feature_mode = N'dollars', sku_list = N'PROD_7293', updated_at_utc = SYSUTCDATETIME() WHERE product_code = N'7293';
+UPDATE dbo.dim_product SET business_unit_code = N'D300', product_family = N'Accessories', marketing_manager = NULL, salesforce_feature_mode = N'dollars', sku_list = N'PROD_7299', updated_at_utc = SYSUTCDATETIME() WHERE product_code = N'7299';
+UPDATE dbo.dim_product SET business_unit_code = N'D300', product_family = N'Accessories', marketing_manager = NULL, salesforce_feature_mode = N'dollars', sku_list = N'PROD_7300', updated_at_utc = SYSUTCDATETIME() WHERE product_code = N'7300';
+UPDATE dbo.dim_product SET business_unit_code = N'D200', product_family = N'Chairs', marketing_manager = N'Krista Beyke', salesforce_feature_mode = N'quantity', sku_list = N'ITEM_ULTRACHAIR-XXX', updated_at_utc = SYSUTCDATETIME() WHERE product_code = N'ULTRACHAIR-XXX';
+GO

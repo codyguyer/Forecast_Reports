@@ -1,0 +1,14 @@
+Product,Division,Month,sku (db),Prod Fam,Units,Actuals (db),Stats Model Fcast (db),Marketing Fcast (db),Stats Abs Error (db),Marketing Abs Error (db),BU Name,Marketing Manager,sku (legacy),Actuals (legacy),Stats Model Fcast (legacy),Marketing Fcast (legacy),Stats Abs Error (legacy),Marketing Abs Error (legacy),_merge
+77000025,D200,2026-01-01,,Mechanical Accessories,quantity,12.0,32.3382175387,22.95,20.3382175387,10.95,Dental,Mandy Schlater,,,,,,,left_only
+77000026,D200,2026-01-01,,Mechanical Accessories,quantity,29.0,66.2412048212,46.92,37.2412048212,17.92,Dental,Mandy Schlater,,,,,,,left_only
+77000027,D200,2026-01-01,,Mechanical Accessories,quantity,4.0,15.6929260703,11.05,11.6929260703,7.050000000000001,Dental,Mandy Schlater,,,,,,,left_only
+77002146,D200,2026-01-01,,Mechanical Accessories,quantity,12.0,24.626490889,29.07,12.626490889,17.07,Dental,Mandy Schlater,,,,,,,left_only
+77002147,D200,2026-01-01,,Mechanical Accessories,quantity,7.0,8.9844047137,11.05,1.9844047137,4.050000000000001,Dental,Mandy Schlater,,,,,,,left_only
+9A586001,D200,2026-01-01,,Mechanical Accessories,quantity,0.0,0.0451620427,0.0,0.0451620427,0.0,Dental,Mandy Schlater,,,,,,,left_only
+9A586002,D200,2026-01-01,,Mechanical Accessories,quantity,1.0,2.5876614969,1.02,1.5876614969,0.020000000000000018,Dental,Mandy Schlater,,,,,,,left_only
+9A694001,D200,2026-01-01,,Mechanical Accessories,quantity,0.0,1.5401354552,12.07,1.5401354552,12.07,Dental,Mandy Schlater,,,,,,,left_only
+9A694002,D200,2026-01-01,,Mechanical Accessories,quantity,0.0,0.1999990248,0.0,0.1999990248,0.0,Dental,Mandy Schlater,,,,,,,left_only
+9A717001,D200,2026-01-01,,Mechanical Accessories,quantity,8.0,12.8254886828,17.0,4.8254886828,9.0,Dental,Mandy Schlater,,,,,,,left_only
+9A721001,D200,2026-01-01,,Mechanical Accessories,quantity,19.0,16.1837001897,44.03,2.8162998102999985,25.03,Dental,Mandy Schlater,,,,,,,left_only
+9A723001,D200,2026-01-01,,Mechanical Accessories,quantity,2.0,4.616857062,5.95,2.6168570620000002,3.95,Dental,Mandy Schlater,,,,,,,left_only
+9A724001,D200,2026-01-01,,Mechanical Accessories,quantity,20.0,20.6472522543,27.03,0.6472522542999997,7.030000000000001,Dental,Mandy Schlater,,,,,,,left_only

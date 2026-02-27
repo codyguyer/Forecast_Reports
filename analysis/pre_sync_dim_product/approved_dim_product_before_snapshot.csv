@@ -1,0 +1,11 @@
+product_code,business_unit_code,product_family,marketing_manager,salesforce_feature_mode,sku_list
+153592-001,D200,Seating,Mandy Schlater,quantity,ITEM_153592-001
+153592-002,D200,Seating,Mandy Schlater,quantity,ITEM_153592-002
+153592-003,D200,Seating,Mandy Schlater,quantity,ITEM_153592-003
+153810-XXX,D200,Seating,Krista Beyke,quantity,ITEM_153810-XXX
+7281,D300,"Parts, Service & Repair",,dollars,prod_7281
+7291,D300,"Parts, Service & Repair",,dollars,prod_7291
+7293,D300,Accessories,,dollars,prod_7293
+7299,D300,Accessories,,dollars,Prod_7299
+7300,D300,Accessories,,dollars,prod_7300
+ULTRACHAIR-XXX,D200,Lights,Krista Beyke,quantity,ITEM_ULTRACHAIR-XXX

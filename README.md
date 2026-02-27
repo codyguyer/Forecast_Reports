@@ -1,6 +1,6 @@
-# Forecast Accuracy Report
+ï»¿# Forecast Accuracy Report
 
-This folder contains the Python script and input files used to generate the monthly Forecast Accuracy Report.
+This folder contains the scripts and input files used to generate the monthly Forecast Accuracy Report, including a DB-capable migration path.
 
 ## What it does
 - Builds Excel dashboards for totals, product family, marketing manager, and product-level accuracy.
@@ -8,13 +8,66 @@ This folder contains the Python script and input files used to generate the mont
 - Applies formatting, highlights winners, and hides specified sheets/rows/columns.
 
 ## Key files
-- `build_forecast_accuracy_report.py` — main report generator
-- `Marketing Forecast Data.xlsx` — marketing forecast input
-- `all_products_actuals_and_bookings.xlsx` — actuals input
-- `stats_model_forecasts_YYYY-Mon.xlsx` — stats model input for the month
-- `product_catalog_master.xlsx` — product catalog lookup
+- `build_forecast_accuracy_report.py` - legacy report generator
+- `build_forecast_accuracy_report_db.py` - DB/copy2026-capable report generator with dual-run comparison support
+- `run_forecast_accuracy_db_monthly.py` - DB-first monthly run orchestrator (loaders + report + comparison)
+- `Marketing Forecast Data.xlsx` - legacy marketing forecast input
+- `Marketing Forecast Data (copy).xlsx` - marketing forecast source for 2026 migration flow (`2026 Data`, starts at `A6`)
+- `all_products_actuals_and_bookings.xlsx` - actuals input
+- `stats_model_forecasts_YYYY-Mon.xlsx` - stats model input for the month
+- `product_catalog_master.xlsx` - product catalog lookup
+- `forecast_accuracy_source_to_db_mapping.md` - source-to-target mapping for migration
+- `db_monthly_control_checklist.md` - operating SOP and monthly control checklist
 
-## Run the report
+## Folder layout
+- Root folder: source scripts + core input files
+- `outputs/reports/`: generated report and validation workbooks
+- `outputs/comparisons/`: dual-run comparison workbooks
+- `analysis/pre_sync_dim_product/`: pre-sync catalog vs `dim_product` diff packages
+
+## Default run mode (DB-first)
+
+Run from this folder:
+
+```powershell
+python run_forecast_accuracy_db_monthly.py `
+  --month YYYY-MM `
+  --server "(localdb)\MSSQLLocalDB" `
+  --database "Forecast_Database" `
+  --compare-baseline legacy `
+  --dq-mode fail
+```
+
+Optional skip flags:
+- `--skip-actuals-load`
+- `--skip-marketing-load`
+- `--skip-catalog-load`
+
+## Load marketing 2026 data to SQL (v4)
+
+From repo root:
+
+```powershell
+python "Demand Planning Projects/Python Modeling/demand_forecast_prototype_v4/scripts/sql/load_marketing_forecast_2026_to_sql.py" `
+  --server "YOUR_SQL_SERVER" `
+  --source-file "Reporting/Ad Hoc Reports/Forecast Reports/Marketing Forecast Data (copy).xlsx"
+```
+
+Defaults:
+- `--sheet` = `2026 Data`
+- `--start-row` = `6` (data starts at `A6`)
+
+## Load BU-grain product catalog attributes to SQL (v4)
+
+This supports product+BU reporting joins and resolves multi-BU mapping gaps that `dim_product` alone cannot represent.
+
+```powershell
+python "Demand Planning Projects/Python Modeling/demand_forecast_prototype_v4/scripts/sql/load_product_catalog_bu_to_sql.py" `
+  --server "(localdb)\MSSQLLocalDB" `
+  --catalog-file "Reporting/Ad Hoc Reports/Forecast Reports/product_catalog_master.xlsx"
+```
+
+## Run the report (legacy)
 From this folder:
 
 ```powershell
@@ -31,31 +84,53 @@ Notes:
 - `--month` defaults to the previous month.
 - Output is written to this folder.
 
+## Run DB/copy2026 migration path
+
+Recommended (copy2026 source, compare against legacy):
+
+```powershell
+python build_forecast_accuracy_report_db.py --month YYYY-MM --data-source copy2026 --compare-baseline legacy
+```
+
+DB-backed source:
+
+```powershell
+python build_forecast_accuracy_report_db.py `
+  --month YYYY-MM `
+  --data-source db `
+  --server "YOUR_SQL_SERVER" `
+  --database "Forecast_Database" `
+  --compare-baseline legacy
+```
+
+Key options:
+- `--data-source`: `copy2026`, `legacy`, or `db`
+- `--compare-baseline`: `none`, `legacy`, `copy2026`, or `db`
+- `--marketing-copy-file`, `--marketing-copy-sheet`, `--start-row`
+- `--dq-mode`: `off`, `warn`, or `fail`
+- `--dq-log`: optional DQ JSON output path
+
 ## Output
-- `Mon Forecast Accuracy Report.xlsx` — main report
-- `Mon Forecast Accuracy Validation.xlsx` — validation workbook
+- `Mon Forecast Accuracy Report.xlsx` - main report
+- `Mon Forecast Accuracy Validation.xlsx` - validation workbook
+- `Mon Forecast Accuracy Comparison (source vs baseline).xlsx` - dual-run variance workbook (when enabled)
+- `outputs/comparisons/Mon Forecast Accuracy DQ (source).json` - DQ check results and gate outcome
 
-## GitHub setup (first time)
-If this folder is not yet a Git repo:
+## Monthly sequence (DB-only operation)
+1. Refresh source files:
+   - `Demand Planning Projects/Python Modeling/demand_forecast_prototype_v4/data/raw/all_products_actuals_and_bookings.xlsx`
+   - `Marketing Forecast Data (copy).xlsx`
+   - `product_catalog_master.xlsx` (if product attribute changes exist)
+2. Run DB monthly orchestrator.
+3. Review DQ JSON results and address critical failures.
+4. Review comparison workbook deltas and document accepted variances.
+5. Archive outputs under `outputs/reports` and `outputs/comparisons`.
+6. Update Mission Control dossier checklist/status.
 
-```powershell
-git init
-git add README.md build_forecast_accuracy_report.py
-git commit -m "Add forecast accuracy report generator"
-```
+## Parser validation tests
 
-Then add a remote and push:
-
-```powershell
-git remote add origin <your-github-repo-url>
-git branch -M main
-git push -u origin main
-```
-
-## Updating and pushing changes
+From this folder:
 
 ```powershell
-git add README.md build_forecast_accuracy_report.py
-git commit -m "Update report logic"
-git push
+pytest test_marketing_copy_2026_parser.py
 ```

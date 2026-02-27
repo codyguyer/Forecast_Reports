@@ -1,0 +1,4 @@
+Units,BU Code,BU Name,Prod Fam,Metric,Stats Model (db),Marketing (db),Stats Model (legacy),Marketing (legacy),_merge,Stats Delta,Marketing Delta
+quantity,D200,Dental,Sterilizer Accessories,Midmark Fcast Acc.,,1.254449906763858,,,left_only,,
+quantity,D300,Animal Health,Imaging,Midmark Fcast Acc.,3.588916185194795,1.036414565826331,1.228637973311294,0.3548085901027078,both,2.360278211883502,0.6816059757236228
+quantity,D300,Animal Health,Scales,Midmark Fcast Acc.,0.4716176760446914,0.4961984793917568,0.4716176760447339,0.4961984793917567,both,-4.25215418431435e-14,5.551115123125783e-17

@@ -1,0 +1,30 @@
+product_code,bu_code,bu_name,sku_list,product_family_catalog,marketing_manager_catalog,salesforce_feature_mode_catalog
+641,D200,Dental,PROD_641,641s,Krista Beyke,quantity
+255,D200,Dental,PROD_255,Lights,Krista Beyke,quantity
+996_S,D200,Dental,PROD_996_S,Seating,Krista Beyke,quantity
+9A599001,D200,Dental,ITEM_9A599001,Sterilizer Accessories,Kelly Ambriole,quantity
+9A682001,D200,Dental,ITEM_9A682001,Sterilizer Accessories,Kelly Ambriole,quantity
+M11-050,D200,Dental,ITEM_M11-050,Sterilizers,Kelly Ambriole,quantity
+M9-050,D200,Dental,ITEM_M9-050,Sterilizers,Kelly Ambriole,quantity
+QC1,D200,Dental,PROD_3QC1,Sterilizers,Kelly Ambriole,quantity
+QC3,D200,Dental,PROD_3QC3,Sterilizers,Kelly Ambriole,quantity
+QC3R,D200,Dental,PROD_3QC3R,Sterilizers,Kelly Ambriole,quantity
+QC6,D200,Dental,PROD_3QC6,Sterilizers,Kelly Ambriole,quantity
+QC6R,D200,Dental,PROD_3QC6R,Sterilizers,Kelly Ambriole,quantity
+250,D300,Animal Health,PROD_50,Lights,John Freytag,quantity
+255,D300,Animal Health,PROD_255,Lights,John Freytag,quantity
+153811,D300,Animal Health,PROD_18700,Seating,John Freytag,quantity
+153812,D300,Animal Health,PROD_18702,Seating,John Freytag,quantity
+996_A,D300,Animal Health,PROD_996_A,Seating,John Freytag,quantity
+996_M,D300,Animal Health,PROD_996_M,Seating,John Freytag,quantity
+996_S,D300,Animal Health,PROD_996_S,Seating,John Freytag,quantity
+CASEWORK,D300,Animal Health,TOTAL CASEWORK,Cabinetry,Steph Bertschy,dollars
+MOBILE WORKSTATIONS,D300,Animal Health,PROD_16895,Workstations,Steph Bertschy,quantity
+QC1,D300,Animal Health,PROD_3QC1,Sterilizers,Sami Michaelis,quantity
+QC3,D300,Animal Health,PROD_3QC3,Sterilizers,Sami Michaelis,quantity
+QC3R,D300,Animal Health,PROD_3QC3R,Sterilizers,Sami Michaelis,quantity
+QC6,D300,Animal Health,PROD_3QC6,Sterilizers,Sami Michaelis,quantity
+QC6R,D300,Animal Health,PROD_3QC6R,Sterilizers,Sami Michaelis,quantity
+WALL MOUNTED WORKSTATIONS,D300,Animal Health,PROD_16875,Workstations,Steph Bertschy,quantity
+MOBILE WORKSTATIONS,D200,Dental,PROD_16895,Workstations,Mandy Schlater,quantity
+WALL MOUNTED WORKSTATIONS,D200,Dental,PROD_16875,Workstations,Mandy Schlater,quantity

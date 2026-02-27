@@ -1,0 +1,14 @@
+product_code,bu_code_catalog,bu_code_db,sku_list_catalog,sku_list_db,product_family_catalog,product_family_db,marketing_manager_catalog,marketing_manager_db,salesforce_feature_mode_catalog,salesforce_feature_mode_db,multi_bu_catalog
+153592-001,D200,D200,ITEM_153592-001,ITEM_153592-001,Chairs,Seating,Mandy Schlater,Mandy Schlater,quantity,quantity,False
+153592-002,D200,D200,ITEM_153592-002,ITEM_153592-002,Chairs,Seating,Mandy Schlater,Mandy Schlater,quantity,quantity,False
+153592-003,D200,D200,ITEM_153592-003,ITEM_153592-003,Chairs,Seating,Mandy Schlater,Mandy Schlater,quantity,quantity,False
+153810-XXX,D200,D200,ITEM_153810-XXX,ITEM_153810-XXX,Chairs,Seating,Krista Beyke,Krista Beyke,quantity,quantity,False
+7281,D300,D300,PROD_7281,PROD_7281,"Parts, Service & Repair","Parts, Service & Repair",nan,None,dollars,dollars,False
+7291,D300,D300,PROD_7291,PROD_7291,"Parts, Service & Repair","Parts, Service & Repair",nan,None,dollars,dollars,False
+7293,D300,D300,PROD_7293,PROD_7293,Accessories,Accessories,nan,None,dollars,dollars,False
+7299,D300,D300,PROD_7299,PROD_7299,Accessories,Accessories,nan,None,dollars,dollars,False
+7300,D300,D300,PROD_7300,PROD_7300,Accessories,Accessories,nan,None,dollars,dollars,False
+9A599001,D200,DIVISION,ITEM_9A599001,ITEM_9A599001,Sterilizer Accessories,Sterilizer Accessories,Kelly Ambriole,Kelly Ambriole,quantity,quantity,False
+9A682001,D200,DIVISION,ITEM_9A682001,ITEM_9A682001,Sterilizer Accessories,Sterilizer Accessories,Kelly Ambriole,Kelly Ambriole,quantity,quantity,False
+CHRG-SVC371,D300,D300,ITEM_CHRG-SVC371,ITEM_CHRG-SVC371,"Parts, Service & Repair","Parts, Service & Repair",nan,None,quantity,quantity,False
+ULTRACHAIR-XXX,D200,D200,ITEM_ULTRACHAIR-XXX,ITEM_ULTRACHAIR-XXX,Chairs,Lights,Krista Beyke,Krista Beyke,quantity,quantity,False

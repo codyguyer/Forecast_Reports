@@ -1,0 +1,12 @@
+product_code,bu_code,sku_list,product_family_catalog,product_family_db,marketing_manager_catalog,marketing_manager_db,salesforce_feature_mode_catalog,salesforce_feature_mode_db
+153592-001,D200,ITEM_153592-001,Chairs,Seating,Mandy Schlater,Mandy Schlater,quantity,quantity
+153592-002,D200,ITEM_153592-002,Chairs,Seating,Mandy Schlater,Mandy Schlater,quantity,quantity
+153592-003,D200,ITEM_153592-003,Chairs,Seating,Mandy Schlater,Mandy Schlater,quantity,quantity
+153810-XXX,D200,ITEM_153810-XXX,Chairs,Seating,Krista Beyke,Krista Beyke,quantity,quantity
+ULTRACHAIR-XXX,D200,ITEM_ULTRACHAIR-XXX,Chairs,Lights,Krista Beyke,Krista Beyke,quantity,quantity
+7281,D300,PROD_7281,"Parts, Service & Repair","Parts, Service & Repair",nan,None,dollars,dollars
+7291,D300,PROD_7291,"Parts, Service & Repair","Parts, Service & Repair",nan,None,dollars,dollars
+7293,D300,PROD_7293,Accessories,Accessories,nan,None,dollars,dollars
+7299,D300,PROD_7299,Accessories,Accessories,nan,None,dollars,dollars
+7300,D300,PROD_7300,Accessories,Accessories,nan,None,dollars,dollars
+CHRG-SVC371,D300,ITEM_CHRG-SVC371,"Parts, Service & Repair","Parts, Service & Repair",nan,None,quantity,quantity

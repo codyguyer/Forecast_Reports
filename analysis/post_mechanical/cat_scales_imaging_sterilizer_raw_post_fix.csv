@@ -1,0 +1,9 @@
+Product,Division,Month,sku,Prod Fam,Units,Actuals,Stats Model Fcast,Marketing Fcast,Stats Abs Error,Marketing Abs Error,BU Name,Marketing Manager
+7230,D300,2026-01-01,,Scales,quantity,25.0,41.1998061972,38.93,16.1998061972,13.93,Animal Health,Jose Valdez
+9A599001,D200,2026-01-01,,Sterilizer Accessories,quantity,30.0,0.0,19.04,30.0,10.96,Dental,Kelly Ambriole
+9A682001,D200,2026-01-01,,Sterilizer Accessories,quantity,44.0,0.0,39.95,44.0,4.049999999999997,Dental,Kelly Ambriole
+BR Sensor,D300,2026-01-01,,Imaging,quantity,76.0,0.5162680126,62.05,75.4837319874,13.95,Animal Health,Danielle Filbrun
+Cat Scales,D300,2026-01-01,,Scales,quantity,37.0,90.2626116663,86.02,53.2626116663,49.02,Animal Health,Jose Valdez
+DC Generator,D300,2026-01-01,,Imaging,quantity,9.0,4.5987412497,5.95,4.4012587503,3.05,Animal Health,Danielle Filbrun
+DR Sensor,D300,2026-01-01,,Imaging,quantity,8.0,10.3888105678,12.07,2.3888105678,4.07,Animal Health,Danielle Filbrun
+Midmark Complete,D300,2026-01-01,,Imaging,quantity,18.0,15.4247375037,27.03,2.575262496300001,9.030000000000001,Animal Health,Danielle Filbrun

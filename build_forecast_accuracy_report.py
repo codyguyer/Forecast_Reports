@@ -132,6 +132,18 @@ def build_raw_data(
 
     catalog_map["_product_key"] = normalize_key(catalog_map["sku_list"])
     catalog_map["_bu_key"] = normalize_key(catalog_map["business_unit_code"])
+    catalog_map["_group_key_norm"] = normalize_key(catalog_map["group_key"])
+
+    # D200 casework can arrive as "Total Casework" in marketing data while catalog splits
+    # it into Synthesis/Artisan lines. Add a merge alias so location-based split can run.
+    d200_casework_groups = {"ARTISAN CASEWORK", "SYNTHESIS CASEWORK"}
+    d200_casework_alias = catalog_map[
+        (catalog_map["_bu_key"] == "D200")
+        & (catalog_map["_group_key_norm"].isin(d200_casework_groups))
+    ].copy()
+    if not d200_casework_alias.empty:
+        d200_casework_alias["_product_key"] = "TOTAL CASEWORK"
+        catalog_map = pd.concat([catalog_map, d200_casework_alias], ignore_index=True)
 
     merged = marketing_df.merge(
         catalog_map,
@@ -197,6 +209,8 @@ def build_raw_data(
     actuals_df = actuals_df[actuals_df["Month"].dt.to_period("M") == month_start.to_period("M")]
     actuals_df["_product_key"] = normalize_key(actuals_df["Product"])
     actuals_df["_bu_key"] = normalize_key(actuals_df["Division"])
+    # Reporting convention: treat Division actuals as D200 for category rollups.
+    actuals_df["_bu_key"] = actuals_df["_bu_key"].replace({"DIVISION": "D200"})
     actuals_rollup = (
         actuals_df.groupby(["_product_key", "_bu_key"], dropna=False)["Actuals"]
         .sum()
@@ -207,6 +221,8 @@ def build_raw_data(
     stats_df = stats_df[stats_df["forecast_month"].dt.to_period("M") == month_start.to_period("M")]
     stats_df["_product_key"] = normalize_key(stats_df["product_id"])
     stats_df["_bu_key"] = normalize_key(stats_df["bu_id"])
+    # Reporting convention: treat Division stats as D200 for category rollups.
+    stats_df["_bu_key"] = stats_df["_bu_key"].replace({"DIVISION": "D200"})
     stats_df["model_type"] = stats_df["model_type"].astype(str).str.upper().str.strip()
 
     # Prefer BLEND when available, otherwise fall back to recommended_model == True
@@ -320,8 +336,8 @@ def build_totals_dashboard(raw: pd.DataFrame) -> pd.DataFrame:
             stats_abs = group["Stats Abs Error"].sum()
             mkt_abs = group["Marketing Abs Error"].sum()
 
-            stats_acc = safe_ratio(stats_sum, actuals_sum)
-            mkt_acc = safe_ratio(mkt_sum, actuals_sum)
+            stats_acc = safe_ratio(actuals_sum, stats_sum)
+            mkt_acc = safe_ratio(actuals_sum, mkt_sum)
             stats_wape = safe_ratio(stats_abs, actuals_sum)
             mkt_wape = safe_ratio(mkt_abs, actuals_sum)
 
@@ -355,8 +371,8 @@ def build_totals_dashboard(raw: pd.DataFrame) -> pd.DataFrame:
         stats_abs = unit_df["Stats Abs Error"].sum()
         mkt_abs = unit_df["Marketing Abs Error"].sum()
 
-        stats_acc = safe_ratio(stats_sum, actuals_sum)
-        mkt_acc = safe_ratio(mkt_sum, actuals_sum)
+        stats_acc = safe_ratio(actuals_sum, stats_sum)
+        mkt_acc = safe_ratio(actuals_sum, mkt_sum)
         stats_wape = safe_ratio(stats_abs, actuals_sum)
         mkt_wape = safe_ratio(mkt_abs, actuals_sum)
 
@@ -401,8 +417,8 @@ def build_prod_fam_dashboard(raw: pd.DataFrame) -> pd.DataFrame:
             stats_abs = group["Stats Abs Error"].sum()
             mkt_abs = group["Marketing Abs Error"].sum()
 
-            stats_acc = safe_ratio(stats_sum, actuals_sum)
-            mkt_acc = safe_ratio(mkt_sum, actuals_sum)
+            stats_acc = safe_ratio(actuals_sum, stats_sum)
+            mkt_acc = safe_ratio(actuals_sum, mkt_sum)
             stats_wape = safe_ratio(stats_abs, actuals_sum)
             mkt_wape = safe_ratio(mkt_abs, actuals_sum)
 
@@ -467,8 +483,8 @@ def build_marketing_manager_dashboard(raw: pd.DataFrame) -> pd.DataFrame:
             stats_abs = group["Stats Abs Error"].sum()
             mkt_abs = group["Marketing Abs Error"].sum()
 
-            stats_acc = safe_ratio(stats_sum, actuals_sum)
-            mkt_acc = safe_ratio(mkt_sum, actuals_sum)
+            stats_acc = safe_ratio(actuals_sum, stats_sum)
+            mkt_acc = safe_ratio(actuals_sum, mkt_sum)
             stats_wape = safe_ratio(stats_abs, actuals_sum)
             mkt_wape = safe_ratio(mkt_abs, actuals_sum)
             stats_wape_acc = None if stats_wape is None else 1 - stats_wape
@@ -514,8 +530,8 @@ def build_product_dashboard(raw: pd.DataFrame) -> pd.DataFrame:
             stats_sum = group["Stats Model Fcast"].sum()
             mkt_sum = group["Marketing Fcast"].sum()
 
-            stats_acc = safe_ratio(stats_sum, actuals_sum)
-            mkt_acc = safe_ratio(mkt_sum, actuals_sum)
+            stats_acc = safe_ratio(actuals_sum, stats_sum)
+            mkt_acc = safe_ratio(actuals_sum, mkt_sum)
 
             records.append(
                 {

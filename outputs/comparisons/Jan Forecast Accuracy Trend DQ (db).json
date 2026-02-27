@@ -1,0 +1,279 @@
+{
+  "checks_total": 5,
+  "checks_failed": 3,
+  "critical_failed": 2,
+  "warning_failed": 1,
+  "checks": [
+    {
+      "name": "rolling_window_completeness",
+      "severity": "warning",
+      "passed": false,
+      "details": {
+        "expected_months": [
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01",
+          "2025-07-01",
+          "2025-08-01",
+          "2025-09-01",
+          "2025-10-01",
+          "2025-11-01",
+          "2025-12-01",
+          "2026-01-01"
+        ],
+        "available_months": [
+          "2026-01-01"
+        ],
+        "missing_months": [
+          "2025-02-01",
+          "2025-03-01",
+          "2025-04-01",
+          "2025-05-01",
+          "2025-06-01",
+          "2025-07-01",
+          "2025-08-01",
+          "2025-09-01",
+          "2025-10-01",
+          "2025-11-01",
+          "2025-12-01"
+        ],
+        "expected_count": 12,
+        "available_count": 1
+      }
+    },
+    {
+      "name": "source_coverage_by_month",
+      "severity": "critical",
+      "passed": false,
+      "details": {
+        "issues": [
+          {
+            "month_start": "2025-02-01",
+            "marketing_rows": 0,
+            "catalog_rows": 268,
+            "stats_rows": 0,
+            "actuals_rows": 269
+          },
+          {
+            "month_start": "2025-03-01",
+            "marketing_rows": 0,
+            "catalog_rows": 268,
+            "stats_rows": 0,
+            "actuals_rows": 269
+          },
+          {
+            "month_start": "2025-04-01",
+            "marketing_rows": 0,
+            "catalog_rows": 268,
+            "stats_rows": 0,
+            "actuals_rows": 269
+          },
+          {
+            "month_start": "2025-05-01",
+            "marketing_rows": 0,
+            "catalog_rows": 268,
+            "stats_rows": 0,
+            "actuals_rows": 269
+          },
+          {
+            "month_start": "2025-06-01",
+            "marketing_rows": 0,
+            "catalog_rows": 268,
+            "stats_rows": 0,
+            "actuals_rows": 269
+          },
+          {
+            "month_start": "2025-07-01",
+            "marketing_rows": 0,
+            "catalog_rows": 268,
+            "stats_rows": 0,
+            "actuals_rows": 269
+          },
+          {
+            "month_start": "2025-08-01",
+            "marketing_rows": 0,
+            "catalog_rows": 268,
+            "stats_rows": 0,
+            "actuals_rows": 269
+          },
+          {
+            "month_start": "2025-09-01",
+            "marketing_rows": 0,
+            "catalog_rows": 268,
+            "stats_rows": 0,
+            "actuals_rows": 269
+          },
+          {
+            "month_start": "2025-10-01",
+            "marketing_rows": 0,
+            "catalog_rows": 268,
+            "stats_rows": 0,
+            "actuals_rows": 269
+          },
+          {
+            "month_start": "2025-11-01",
+            "marketing_rows": 0,
+            "catalog_rows": 268,
+            "stats_rows": 0,
+            "actuals_rows": 269
+          },
+          {
+            "month_start": "2025-12-01",
+            "marketing_rows": 0,
+            "catalog_rows": 268,
+            "stats_rows": 0,
+            "actuals_rows": 269
+          }
+        ],
+        "issue_count": 11
+      }
+    },
+    {
+      "name": "trend_grain_uniqueness",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "duplicate_count": 0
+      }
+    },
+    {
+      "name": "denominator_validity",
+      "severity": "critical",
+      "passed": false,
+      "details": {
+        "invalid_count": 1,
+        "examples": [
+          {
+            "month_start": "2026-01-01 00:00:00",
+            "units": "quantity",
+            "view_level": "product",
+            "bu_code": "D100",
+            "bu_name": "Medical",
+            "prod_fam": "Heine",
+            "product": "A-095-12-930-166",
+            "marketing_manager": "Brooke Griesdorn",
+            "metric_name": "midmark_fcast_acc",
+            "actuals_sum": 0.0,
+            "model_side": "marketing",
+            "metric_value": -0.0,
+            "forecast_sum": -0.34,
+            "abs_error_sum": 0.34
+          }
+        ]
+      }
+    },
+    {
+      "name": "topn_rank_integrity",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "top_n_products": 10,
+        "counts": [
+          {
+            "units": "dollars",
+            "topn_count": 9
+          },
+          {
+            "units": "quantity",
+            "topn_count": 10
+          }
+        ],
+        "over_limit": []
+      }
+    }
+  ],
+  "anchor_month": "2026-01-01",
+  "window_start": "2025-02-01",
+  "window_end": "2026-01-01",
+  "window_months": 12,
+  "top_n_products": 10,
+  "source_counts": [
+    {
+      "month_start": "2025-02-01",
+      "marketing_rows": 0,
+      "catalog_rows": 268,
+      "stats_rows": 0,
+      "actuals_rows": 269
+    },
+    {
+      "month_start": "2025-03-01",
+      "marketing_rows": 0,
+      "catalog_rows": 268,
+      "stats_rows": 0,
+      "actuals_rows": 269
+    },
+    {
+      "month_start": "2025-04-01",
+      "marketing_rows": 0,
+      "catalog_rows": 268,
+      "stats_rows": 0,
+      "actuals_rows": 269
+    },
+    {
+      "month_start": "2025-05-01",
+      "marketing_rows": 0,
+      "catalog_rows": 268,
+      "stats_rows": 0,
+      "actuals_rows": 269
+    },
+    {
+      "month_start": "2025-06-01",
+      "marketing_rows": 0,
+      "catalog_rows": 268,
+      "stats_rows": 0,
+      "actuals_rows": 269
+    },
+    {
+      "month_start": "2025-07-01",
+      "marketing_rows": 0,
+      "catalog_rows": 268,
+      "stats_rows": 0,
+      "actuals_rows": 269
+    },
+    {
+      "month_start": "2025-08-01",
+      "marketing_rows": 0,
+      "catalog_rows": 268,
+      "stats_rows": 0,
+      "actuals_rows": 269
+    },
+    {
+      "month_start": "2025-09-01",
+      "marketing_rows": 0,
+      "catalog_rows": 268,
+      "stats_rows": 0,
+      "actuals_rows": 269
+    },
+    {
+      "month_start": "2025-10-01",
+      "marketing_rows": 0,
+      "catalog_rows": 268,
+      "stats_rows": 0,
+      "actuals_rows": 269
+    },
+    {
+      "month_start": "2025-11-01",
+      "marketing_rows": 0,
+      "catalog_rows": 268,
+      "stats_rows": 0,
+      "actuals_rows": 269
+    },
+    {
+      "month_start": "2025-12-01",
+      "marketing_rows": 0,
+      "catalog_rows": 268,
+      "stats_rows": 0,
+      "actuals_rows": 269
+    },
+    {
+      "month_start": "2026-01-01",
+      "marketing_rows": 311,
+      "catalog_rows": 268,
+      "stats_rows": 267,
+      "actuals_rows": 269
+    }
+  ],
+  "output": "C:\\Users\\cguyer\\OneDrive - Midmark Corporation\\Documents\\Sales Ops\\Reporting\\Ad Hoc Reports\\Forecast Reports\\outputs\\reports\\Jan Forecast Accuracy Trend Report db-monthly-run.xlsx"
+}

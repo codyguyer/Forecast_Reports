@@ -4,7 +4,7 @@ from build_forecast_accuracy_report_db import parse_marketing_copy_2026, validat
 
 
 ROOT = Path(r"c:\Users\cguyer\OneDrive - Midmark Corporation\Documents\Sales Ops\Reporting\Ad Hoc Reports\Forecast Reports")
-SOURCE = ROOT / "Marketing Forecast Data (copy).xlsx"
+SOURCE = ROOT / "Marketing Forecast Data.xlsx"
 
 
 def test_parse_2026_data_from_a6() -> None:

@@ -14,7 +14,7 @@ Map each Forecast Accuracy report input to database-backed lineage for the DB mi
 
 ## Key Transform Rules
 
-1. Marketing source for this phase is only `Marketing Forecast Data (copy).xlsx` sheet `2026 Data`, starting at row `A6`.
+1. Marketing source for this phase is `Marketing Forecast Data.xlsx` sheet `2026 Data`, starting at row `A6`.
 2. Month token (`Jan`..`Dec`) + fiscal year (`FY26`) maps to `forecast_month` month-start date.
 3. `Division` BU value is normalized to `D200`.
 4. Geography for report mapping remains `AMERICAS`.

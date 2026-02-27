@@ -1,0 +1,109 @@
+{
+  "report_month": "2026-02-01",
+  "source": "db",
+  "checks_total": 12,
+  "checks_failed": 0,
+  "critical_failed": 0,
+  "warning_failed": 0,
+  "checks": [
+    {
+      "name": "marketing_rows_present",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "row_count": 311
+      }
+    },
+    {
+      "name": "catalog_rows_present",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "row_count": 268
+      }
+    },
+    {
+      "name": "stats_rows_present_for_month",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "row_count": 825,
+        "month": "2026-02-01"
+      }
+    },
+    {
+      "name": "actuals_rows_present_for_month",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "row_count": 269,
+        "month": "2026-02-01"
+      }
+    },
+    {
+      "name": "marketing_key_nulls",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "null_key_rows": 0
+      }
+    },
+    {
+      "name": "marketing_duplicate_keys",
+      "severity": "warning",
+      "passed": true,
+      "details": {
+        "duplicate_rows": 0
+      }
+    },
+    {
+      "name": "marketing_geography_filter_behavior",
+      "severity": "warning",
+      "passed": true,
+      "details": {
+        "non_americas_rows": 0,
+        "sample": []
+      }
+    },
+    {
+      "name": "actuals_key_nulls",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "null_key_rows": 0
+      }
+    },
+    {
+      "name": "actuals_duplicate_keys",
+      "severity": "warning",
+      "passed": true,
+      "details": {
+        "duplicate_rows": 0
+      }
+    },
+    {
+      "name": "stats_key_nulls",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "null_key_rows": 0
+      }
+    },
+    {
+      "name": "stats_duplicate_keys",
+      "severity": "warning",
+      "passed": true,
+      "details": {
+        "duplicate_rows": 0
+      }
+    },
+    {
+      "name": "catalog_key_nulls",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "null_key_rows": 0
+      }
+    }
+  ]
+}

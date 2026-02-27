@@ -19,7 +19,7 @@ except ImportError:
 
 
 ROOT = legacy.ROOT
-MARKETING_COPY_FILE = ROOT / "Marketing Forecast Data (copy).xlsx"
+MARKETING_COPY_FILE = ROOT / "Marketing Forecast Data.xlsx"
 
 
 @dataclass
